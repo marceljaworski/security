@@ -1,21 +1,19 @@
 import bcrypt from "bcrypt";
-const db = [];
-
-const signUp = async (user) => {
-    const saltRounds =12;
-    const salt = await bcrypt.genSalt(saltRounds);
-    console.log("Salt", salt);
-
-    const hashedSaltedPassword = await bcrypt.hash(user.password, salt);
-    console.log("Hashed Salted Password: ", hashedSaltedPassword)
-};
 
 const logIn = async (user) => {
-    
+    const result = db.find(user => user.username == username);
+    if(!result) console.log("user not found");
+    console.log(user);
 };
 
 const testUser = {
     username: "ulaula",
     password: "ElvisPresly"
 };
-await signUp(testUser)
+const newUser = {
+    username: "swing",
+    password: "Michael Jackson"
+};
+await signUp(testUser);
+await signUp(newUser);
+await logIn(testUser);
