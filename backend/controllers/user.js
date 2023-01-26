@@ -12,8 +12,8 @@ import * as User from "../models/User.js";
 // };
 
 export const create = async (req, res, next) => {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
     try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const result = await User.create({email: req.body.email, password: hashedPassword});
         console.log(req.body)
         res.status(201).json(result);
@@ -27,13 +27,9 @@ export const login = async (req, res, next) => {
    
     try {
         const result = await User.getOne({email: req.body.email});
-        console.log(req.body)
         const passwordIsEqual = await bcrypt.compare(req.body.password, result.password);
-        console.log(passwordIsEqual);
-        if(passwordIsEqual){
-            res.status(201).json(result);
-        }
-        
+        if(!passwordIsEqual)return res.status(401).end();
+        if(passwordIsEqual)return res.status(201).end();
     } catch(error) {
         next(error);
     };

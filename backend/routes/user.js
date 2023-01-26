@@ -1,11 +1,11 @@
 import { Router } from "express";
 import * as user from "../controllers/user.js";
 import validate from "../middlewares/validate.js";
-import { postSchema } from "./user.schema.js";
+import { postUser } from "./user.schema.js";
 
 const userRoutes = Router();
 
-userRoutes.post("/register", validate(postSchema), user.create);
+userRoutes.post("/register", validate(postUser), user.create);
 userRoutes.post("/login", user.login);
 // registerRoutes.get("/", register.getAll);
 // registerRoutes.get("/:registerId", register.getOne);
