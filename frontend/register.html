@@ -10,14 +10,15 @@
     <div class="container">
         <h1>Sign Up</h1>
         <form onsubmit="handleForm(event)">
+            <p id="error-message"></p>
             <div>
-                <input type="email" placeholder="E-Mail Adresse"/>
+                <input id="email" type="email" placeholder="E-Mail Adresse"/>
             </div>
             <div>
-                <input type="password1" required placeholder="password"/>
+                <input id="password1" type="password" required placeholder="Password"/>
             </div>
             <div>
-                <input type="password2" required placeholder="repeat your password"/>
+                <input id="password2" type="password" required placeholder="repeat your password"/>
             </div>
             <div>
                 <button type="submit">Register</button>
@@ -26,21 +27,36 @@
     </div>
     <script>
         function handleForm(event){
+            event.preventDefault();
             const email = document.querySelector("#email");
             const password1 = document.querySelector("#password1");
             const password2 = document.querySelector("#password2");
             if(password1.value != password2.value){
-                document.querySelector
+                document.querySelector("#error-message").innerText = "Passwords do not match"
+                return
             }
-            event.preventDefault();
-            fetch("http://localhost:4001/user/register",{
+            
+            fetch("http://localhost:4003/user/register",{
                 method: "POST",
                 headers: {
                     "content-Type": "application/json"
                 },
+                body: JSON.stringify({
+                    email: email.value,
+                    password: password1.value
+                })
             })
-                .then(res => res.json())
-                .then(json =>  window.location.href = 'index.html')
+            .then(res => {
+                    if(res.status != 201) {
+                        throw new Error("Registration unsuccessful")
+                    } else {
+                        return res.json()
+                    }
+                })
+            .then(json => window.location.href = 'index.html')
+            .catch(err => {
+                document.querySelector("#error-message").innerText = err.message
+            })
         };
     </script>
     

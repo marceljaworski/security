@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log IN</title>
+    <title>Log In</title>
 </head>
 <body>
     <div class="container">
-        <h1>Log IN</h1>
+        <h1>Log In</h1>
         <form onsubmit="handleForm(event)">
+            <p id="error-message"></p>
             <div>
-                <input type="email" placeholder="E-Mail Adresse"/>
+                <input id="email" type="email" placeholder="E-Mail Adresse"/>
             </div>
             <div>
-                <input type="password1" required placeholder="password"/>
+                <input id="password" type="password" required placeholder="password"/>
             </div>
          
             <div>
@@ -24,10 +25,10 @@
     </div>
     <script>
         function handleForm(event){
-            const email = document.querySelector("#email");
-            const password1 = document.querySelector("#password1");
             event.preventDefault();
-            fetch("http://localhost:4001/user/login",{
+            const email = document.querySelector("#email");
+            const password = document.querySelector("#password");
+            fetch("http://localhost:4003/user/login",{
                 method: "POST",
                 headers: {
                     "content-Type": "application/json"
@@ -37,8 +38,17 @@
                     password: password.value
                 })
             })
-                .then(res => res.json())
+            .then(res => {
+                    if(res.status != 200) {
+                        throw new Error("Login not possible")
+                    } else {
+                        return res.json()
+                    }
+                })
                 .then(json =>  window.location.href = 'index.html')
+                .catch(err => {
+                    document.querySelector("#error-message").innerText = err.message
+                })
         };
     </script>
     
