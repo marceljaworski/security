@@ -10,7 +10,7 @@ import logMiddleware from "./middlewares/log.js";
 
 const app = express();
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4003;
 app.listen(port, () => console.log(`listening on port ${port}`));
 
 app.use(logMiddleware);
@@ -18,6 +18,7 @@ app.use(cors({origin: "*"}))
 app.use(express.json());
 
 app.use("/user/register",  registerRoutes);
+// app.use("/user/login",  loginRoutes);
 
 app.use((error, req, res, next) => {
     console.error(error);

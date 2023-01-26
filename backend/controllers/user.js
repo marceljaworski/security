@@ -1,4 +1,5 @@
 import * as User from "../models/User.js";
+import bcrypt from "bcrypt";
 
 
 // export const getAll = async (req, res, next) => {
@@ -11,8 +12,9 @@ import * as User from "../models/User.js";
 // };
 
 export const create = async (req, res, next) => {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
     try {
-        const result = await User.create(req.body);
+        const result = await User.create({email: req.body.email, password: hashedPassword});
         console.log(req.body)
         res.status(201).json(result);
     } catch(error) {

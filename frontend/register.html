@@ -8,16 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Register</h1>
+        <h1>Sign Up</h1>
         <form onsubmit="handleForm(event)">
             <div>
                 <input type="email" placeholder="E-Mail Adresse"/>
             </div>
             <div>
-                <input type="password" placeholder="password"/>
+                <input type="password1" required placeholder="password"/>
             </div>
             <div>
-                <input type="password" placeholder="repeat your password"/>
+                <input type="password2" required placeholder="repeat your password"/>
             </div>
             <div>
                 <button type="submit">Register</button>
@@ -26,7 +26,21 @@
     </div>
     <script>
         function handleForm(event){
+            const email = document.querySelector("#email");
+            const password1 = document.querySelector("#password1");
+            const password2 = document.querySelector("#password2");
+            if(password1.value != password2.value){
+                document.querySelector
+            }
             event.preventDefault();
+            fetch("http://localhost:4001/user/register",{
+                method: "POST",
+                headers: {
+                    "content-Type": "application/json"
+                },
+            })
+                .then(res => res.json())
+                .then(json =>  window.location.href = 'index.html')
         };
     </script>
     

@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import "./lib/mongoose.js";
+
 
 import mongoose from "mongoose";
 mongoose.set('strictQuery', false);
