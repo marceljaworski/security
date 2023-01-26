@@ -38,8 +38,8 @@ export const create = async (document) => {
     return result;
     
 };
-export const getOne = async (userId) => {
-    const user = await User.findById(userId);
+export const getOne = async (filter) => {
+    const user = await User.findOne(filter);
     return user;
 };
 // export const replace = async (userId, data) => {

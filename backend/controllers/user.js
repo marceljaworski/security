@@ -19,7 +19,6 @@ export const create = async (req, res, next) => {
         res.status(201).json(result);
     } catch(error) {
         next(error);
-        // res.status(400).send({error: error.message});
     };
   
 };
@@ -34,9 +33,9 @@ export const login = async (req, res, next) => {
         if(passwordIsEqual){
             res.status(201).json(result);
         }
+        
     } catch(error) {
         next(error);
-        // res.status(400).send({error: error.message});
     };
   
 };

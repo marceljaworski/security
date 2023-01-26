@@ -39,13 +39,12 @@
                 })
             })
                 .then(res => {
-                        if(res.status != 200) {
-                            throw new Error("Login not possible")
-                        } else {
-                            return res.json()
-                        }
+                        if(res.status != 201) {
+                            throw new Error("Login not possible!!")
+                        } 
                     })
                     .then(json =>  window.location.href = 'index.html')
+                    
                     .catch(err => {
                         document.querySelector("#error-message").innerText = err.message
                     })
