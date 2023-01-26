@@ -46,17 +46,17 @@
                     password: password1.value
                 })
             })
-            .then(res => {
+                .then(res => {
                     if(res.status != 201) {
                         throw new Error("Registration unsuccessful")
                     } else {
                         return res.json()
-                    }
+                    };
                 })
-            .then(json => window.location.href = 'index.html')
-            .catch(err => {
-                document.querySelector("#error-message").innerText = err.message
-            })
+                .then(json => window.location.href = 'index.html')
+                .catch(err => {
+                    document.querySelector("#error-message").innerText = err.message
+                })
         };
     </script>
     

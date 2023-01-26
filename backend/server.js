@@ -4,7 +4,7 @@ dotenv.config();
 import "./lib/mongoose.js";
 
 import express from "express";
-import registerRoutes from "./routes/user.js"
+import userRoutes from "./routes/user.js"
 import cors from "cors";
 import logMiddleware from "./middlewares/log.js";
 
@@ -17,8 +17,8 @@ app.use(logMiddleware);
 app.use(cors({origin: "*"}))
 app.use(express.json());
 
-app.use("/user/register",  registerRoutes);
-// app.use("/user/login",  loginRoutes);
+app.use("/user", userRoutes);
+
 
 app.use((error, req, res, next) => {
     console.error(error);

@@ -38,17 +38,17 @@
                     password: password.value
                 })
             })
-            .then(res => {
-                    if(res.status != 200) {
-                        throw new Error("Login not possible")
-                    } else {
-                        return res.json()
-                    }
-                })
-                .then(json =>  window.location.href = 'index.html')
-                .catch(err => {
-                    document.querySelector("#error-message").innerText = err.message
-                })
+                .then(res => {
+                        if(res.status != 200) {
+                            throw new Error("Login not possible")
+                        } else {
+                            return res.json()
+                        }
+                    })
+                    .then(json =>  window.location.href = 'index.html')
+                    .catch(err => {
+                        document.querySelector("#error-message").innerText = err.message
+                    })
         };
     </script>
     
