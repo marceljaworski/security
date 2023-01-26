@@ -1,5 +1,5 @@
-import * as User from "../models/User.js";
 import bcrypt from "bcrypt";
+import * as User from "../models/User.js";
 
 
 // export const getAll = async (req, res, next) => {
@@ -17,6 +17,23 @@ export const create = async (req, res, next) => {
         const result = await User.create({email: req.body.email, password: hashedPassword});
         console.log(req.body)
         res.status(201).json(result);
+    } catch(error) {
+        next(error);
+        // res.status(400).send({error: error.message});
+    };
+  
+};
+
+export const login = async (req, res, next) => {
+   
+    try {
+        const result = await User.getOne({email: req.body.email});
+        console.log(req.body)
+        const passwordIsEqual = await bcrypt.compare(req.body.password, result.password);
+        console.log(passwordIsEqual);
+        if(passwordIsEqual){
+            res.status(201).json(result);
+        }
     } catch(error) {
         next(error);
         // res.status(400).send({error: error.message});

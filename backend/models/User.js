@@ -1,8 +1,9 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
     email: {
         type: String,
+        unique: true,
         validate: {
             validator: (v) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v),
             message: "Please enter a valid email address"
@@ -37,10 +38,10 @@ export const create = async (document) => {
     return result;
     
 };
-// export const getOne = async (photographerId) => {
-//     const user = await User.findById(userId);
-//     return user;
-// };
+export const getOne = async (userId) => {
+    const user = await User.findById(userId);
+    return user;
+};
 // export const replace = async (userId, data) => {
 //     const user = await User.findOneAndReplace({_id: userId}, data, {returnDocument: "after", runValidators: true},);
 
