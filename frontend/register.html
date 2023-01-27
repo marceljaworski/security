@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Sign Up</h1>
+        <h1>New User</h1>
         <form onsubmit="handleForm(event)">
             <p id="error-message"></p>
             <div>
@@ -48,12 +48,11 @@
             })
                 .then(res => {
                     if(res.status != 201) {
-                        throw new Error("Registration unsuccessful")
+                        throw new Error("please enter a valid E-Mail address")
                     } else {
                         return res.json()
                     };
-                })
-                .then(json => window.location.href = 'index.html')
+                }).then(json => window.location.href = 'index.html')
                 .catch(err => {
                     document.querySelector("#error-message").innerText = err.message
                 })
