@@ -1,6 +1,3 @@
-DEUTSCH WEITERUNTEN! BONUS NUT IN DEUTSCH
-WICHTIG: Schreibt den Code selber und kompiert ihn nicht einfach!!
-
 # Security with bcrypt 🔒🔑
 
 This assignment will allow you to play around with the `bcrypt` package by building a CLI application
@@ -155,4 +152,12 @@ Wir möchten den Hash, den wir in der vorherigen Funktion erzeugt haben, in eine
 
 ## Bonus
 
-Baue eine Brute Force Funktion, die jegliche Kombination von Buchstaben und Zahlen für den login ausprobiert. Die Funktion sollte als Parameter die maximale Anzahl an Zeichen erwarten. Spiele herum, wie lange dein Brute Force Algorithmus benötigt und wie gut er funktioniert.
+
+Erstelle die notwendigen register and login Routen in einem neuen auth Router
+Erstelle ein neues Model für User mit den Feldern email und password
+Validiere das Model ausreichend
+Erstelle den Controller, der Registrierungsanfragen verarbeiten, indem ein neuer Nutzer angelegt wird und das Passwort gehashed gespeichert wird
+Erstelle den Controller, der Anmeldeanfragen verarbeitet, indem du Benutzername und Passwort überprüfst
+Betreibe Error Handling, wenn fehlerhafte Daten eingegeben werden
+Teste deine API mit eine Tool wie Thunderclient
+BONUS: Baue ein Frontend (plain HTML reicht) mit dem man sich registrieren und anmelden kann. Mach es schön :entspannt:

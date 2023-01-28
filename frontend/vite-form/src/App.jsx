@@ -4,7 +4,7 @@ import Main from "./views/Main";
 import Login from "./views/Login";
 import Welkome from "./views/Welkome";
 import Header from "./components/Header";
-import UserProvider from "./context/User"
+import UserProvider from "./context/User";
 function App() {
   
   return (
@@ -13,9 +13,9 @@ function App() {
         <Header />
         <UserProvider>
           <Routes>
-              <Route path="/user/register" element={<Main />} />
-              <Route path="/user/login" element={<Login />} />
-              <Route path="/user/welkome" element={<Welkome />} />
+              <Route path="/register" element={<Main />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/welkome" element={<Welkome />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>
@@ -23,4 +23,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
