@@ -13,9 +13,9 @@ function App() {
         <Header />
         <UserProvider>
           <Routes>
-              <Route path="/register" element={<Main />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/welkome" element={<Welkome />} />
+              <Route path="/user/register" element={<Main />} />
+              <Route path="/user/login" element={<Login />} />
+              <Route path="/user/welkome" element={<Welkome />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>

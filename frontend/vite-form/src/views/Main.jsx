@@ -2,11 +2,8 @@ import { useState, useContext } from 'react';
 import { UserContext } from "../context/User";
 
 function Main(){
-  const { user } = useContext(UserContext);
-  const [values, setValues] = useState({
-    name: "Test",
-    email: "test@test.de",
-  });
+  const { setNewUser } = useContext(UserContext);
+  const [values, setValues] = useState({});
   
   const handleInput = (event) => {
     setValues({
@@ -15,7 +12,8 @@ function Main(){
     });
   };
   const handlePost = () => {
-    let user = values;
+    const user = values;
+    setNewUser(user);
   };
   
   return (
@@ -23,9 +21,9 @@ function Main(){
       <header className="App-header">
         <h1>Register</h1>
         <input type="email" placeholder="E-Mail-Adresse" onChange={handleInput} value={values.email} name="email" />
-        <input type="password" placeholder="pasword" onChange={handleInput} value={values.password} name="password" />
+        <input type="password" placeholder="password" onChange={handleInput} value={values.password} name="password" />
         <button onClick={handlePost} type="submit">Register</button>
-        <p>{values.email}, Deine E-Mail-Adresse lautet {values.password}</p>
+        <p>{values.email}</p>
       </header>
     </div>
   );
