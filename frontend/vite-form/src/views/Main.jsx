@@ -1,16 +1,16 @@
 import { useState } from 'react';
 // import { UserContext } from "../context/User";
-import register from "../api";
-
+import register from "../library/api";
+const inicialValues = {
+  email: "",
+  password: "",
+  password2: "",
+}
 function Main(){
 
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-    password2: "",
-  });
+  const [values, setValues] = useState(inicialValues);
   
-  const handleInput = (event) => {
+  const handleInput = (event) => { 
       event.preventDefault();
     setValues({
       ...values,
@@ -24,11 +24,7 @@ function Main(){
       console.error("password don't match")
     }else{
       register(values.email, values.password);
-      setValues({
-        email: "",
-        password: "",
-        password2: "",
-      });
+      setValues(inicialValues);
     }
   };
   
@@ -40,7 +36,7 @@ function Main(){
         <input type="email" placeholder="E-Mail-Adresse" onChange={handleInput} value={values.email} name="email" />
         <input type="password" placeholder="password" onChange={handleInput} value={values.password} name="password" />
         <input type="password" placeholder="confirm your password" onChange={handleInput} value={values.password2} name="password2" />
-        {/* <p className={user.password == user.password2?'error':' '}>password do not match</p> */}
+        {/* <p className={user.password == user.password2?'error':'hidden'}>password do not match</p> */}
         <button onClick={handlePost} type="submit">Register</button>
       </form>
         
