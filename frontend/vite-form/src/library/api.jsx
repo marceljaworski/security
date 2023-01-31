@@ -1,5 +1,5 @@
 const URL = "http://localhost:4003/user/";
-export default function register(email, password){
+export const register = (email, password) => {
 
     try{
         fetch(`${URL}register`,{
@@ -22,7 +22,7 @@ export default function register(email, password){
         console.error(error)
     }
 };
-export default function login(email, password){
+export const login = (email, password) => {
 
     try{
         fetch(`${URL}login`,{
@@ -34,15 +34,18 @@ export default function login(email, password){
                     }) 
             })
                 .then((response) => {
-                    if (response.status === 200) {
+                    if (response.status === 201) {
+                        console.log("Welkome!")
                         return response.json();
                     }
-                    if (response.status !== 200) {
-                        console.error("unsuccessful post");
+                    if (response.status === 401) {
+                        console.error("Unauthorized");
                     } 
                 })
     }catch(error){
         console.error(error)
     }
 };
+
+
 

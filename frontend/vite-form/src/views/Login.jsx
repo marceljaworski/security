@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import login from "../library/api";
+import { login } from "../library/api";
 
 const inicialValues = {
   email: "",
@@ -17,8 +17,8 @@ function Login() {
   };
   const handlePost = (event) => {
     event.preventDefault();
-    const user = values;
-    login(user);
+    console.log(values)
+    login(values.email, values.password);
     setValues(inicialValues);
   };
   return (
@@ -28,13 +28,10 @@ function Login() {
       <form>
         <input type="email" placeholder="E-Mail-Adresse" onChange={handleInput} value={values.email} name="email" />
         <input type="password" placeholder="password" onChange={handleInput} value={values.password} name="password" />
-        
         <button onClick={handlePost} type="submit">Register</button>
       </form>
-        
-    
     </div>
-  )
-}
+  );
+};
 
 export default Login

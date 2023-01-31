@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { register } from "../library/api"
 // import { UserContext } from "../context/User";
-import register from "../library/api";
+
 const inicialValues = {
   email: "",
   password: "",
