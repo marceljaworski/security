@@ -28,6 +28,7 @@ function Login() {
       <form>
         <input type="email" placeholder="E-Mail-Adresse" onChange={handleInput} value={values.email} name="email" />
         <input type="password" placeholder="password" onChange={handleInput} value={values.password} name="password" />
+        {/* <p className={user.password == user.password2?'error':'hidden'}>password do not match</p> */}
         <button onClick={handlePost} type="submit">Register</button>
       </form>
     </div>
