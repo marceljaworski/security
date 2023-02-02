@@ -5,6 +5,7 @@ export const register = (email, password) => {
         fetch(`${URL}register`,{
                 method: 'POST',
                 headers: {"content-Type": "application/json"},
+                credentials: "include",
                 body: JSON.stringify({
                     email : email,
                     password: password
