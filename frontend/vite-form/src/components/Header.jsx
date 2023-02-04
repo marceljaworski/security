@@ -5,8 +5,8 @@ function Header() {
     <header>
       <nav>
         <ul>
-          <li><Link to="/user/register">Register</Link></li>
-          <li><Link to="/user/login">Log in</Link></li>
+          <li><Link to="/auth/register">Register</Link></li>
+          <li><Link to="/auth/login">Log in</Link></li>
         </ul>
       </nav>
     </header>
