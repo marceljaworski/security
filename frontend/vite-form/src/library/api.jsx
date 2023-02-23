@@ -28,6 +28,7 @@ export const login = (email, password) => {
     try{
         fetch(`${URL}login`,{
                 method: 'POST',
+                credentials: 'include',
                 headers: {"content-Type": "application/json"},
                 body: JSON.stringify({
                     email : email,
