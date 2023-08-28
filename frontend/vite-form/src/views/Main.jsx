@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { register } from "../library/api"
+import { useState, useEffect } from 'react';
+import { register } from "../library/api";
+import { useNavigate } from 'react-router-dom';
+import Cookies from "js-cookie";
 // import { UserContext } from "../context/User";
 
 const inicialValues = {
@@ -10,6 +12,15 @@ const inicialValues = {
 function Main(){
 
   const [values, setValues] = useState(inicialValues);
+  // const [loggedInUser, setLoggedInUser] = useState("")
+  const navigate = useNavigate()
+
+  useEffect(()=> {
+    const loggedInCookie = Cookies.get("loggedIn")
+    if(loggedInCookie)
+      return navigate("/welkome")
+  }, [])
+      
   
   const handleInput = (event) => { 
       event.preventDefault();
