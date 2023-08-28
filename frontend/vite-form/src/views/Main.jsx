@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { register } from "../library/api";
 import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
-// import { UserContext } from "../context/User";
 
 const inicialValues = {
   email: "",
@@ -18,7 +17,8 @@ function Main(){
   useEffect(()=> {
     const loggedInCookie = Cookies.get("loggedIn")
     if(loggedInCookie)
-      return navigate("/welkome")
+    alert("Welcome again! You are already registered");
+    return navigate("/welkome")
   }, [])
       
   
